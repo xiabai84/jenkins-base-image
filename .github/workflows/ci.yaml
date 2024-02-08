@@ -23,6 +23,7 @@ jobs:
           --label org.opencontainers.image.revision="$GITHUB_SHA"
           --label org.opencontainers.image.url="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
           --tag ghcr.io/xiabai84/jenkins-base-image/jenkins-base-image:latest
+          --tag ghcr.io/xiabai84/jenkins-base-image/jenkins-base-image:$GITHUB_SHA
 
       - name: Login
         env:
@@ -30,4 +31,4 @@ jobs:
         run: docker login https://ghcr.io --username dummy --password $GITHUB_TOKEN
 
       - name: Push
-        run: docker push ghcr.io/xiabai84/jenkins-base-image/jenkins-base-image:latest
+        run: docker push ghcr.io/xiabai84/jenkins-base-image/jenkins-base-image:$GITHUB_SHA
